@@ -1,0 +1,45 @@
+# ── Secrets — NEVER bake into the image ─────────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Version control ──────────────────────────────────────────────────────────
+.git
+.gitignore
+.github
+
+# ── Python build artifacts ───────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+*.egg
+
+# ── Virtual environments ─────────────────────────────────────────────────────
+myenv/
+.venv/
+venv/
+env/
+ENV/
+
+# ── Local LanceDB data (rebuilt at startup every time) ───────────────────────
+# Note: data/catalog.json and data/embeddings_cache.* ARE included (baked in)
+data/lancedb/
+
+# ── IDE / OS artifacts ───────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.DS_Store
+Thumbs.db
+*.swp
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Sample conversations (not needed at runtime) ──────────────────────────────
+sample_conversations/
