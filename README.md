@@ -86,7 +86,12 @@ Stateless multi-turn conversation. Send the **full conversation history** on eve
 
 ---
 
-## Deploy to Render
+## Deploy to Render (Free)
+
+Render's free tier supports Docker web services with 512 MB RAM — enough for this stack.
+
+> ⚠️ **Free tier spin-down**: Render spins down the service after 15 minutes of inactivity.
+> The first request after spin-down takes ~5 s (cold start is fast because embeddings are baked into the image).
 
 ### One-click via `render.yaml`
 
@@ -99,15 +104,15 @@ Stateless multi-turn conversation. Send the **full conversation history** on eve
    ```
 5. Click **Deploy**
 
-Build takes ~5-8 minutes (pip install + BGE model download + embedding precompute).  
-Cold start after deploy: **< 5 seconds** (embeddings cached in image).
+Build takes ~5-8 minutes (pip install + BGE model download + embedding precompute).
+Cold start after spin-down: **~5 seconds** (embeddings baked into Docker image).
 
 ### Manual via Render dashboard
 
 1. New → **Web Service** → Connect your GitHub repo
 2. **Runtime:** Docker
-3. **Health Check Path:** `/health`
-4. **Plan:** Starter (512 MB RAM is enough)
+3. **Plan:** Free
+4. **Health Check Path:** `/health`
 5. Add env var `GROQ_API_KEY` in the Environment tab
 6. Deploy
 

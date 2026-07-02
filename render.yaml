@@ -3,16 +3,13 @@ services:
     name: shl-recommender
     runtime: docker
     dockerfilePath: ./Dockerfile
-    region: oregon      # closest to SHL eval servers; change to "frankfurt" for EU
-    plan: starter       # 512 MB RAM — sufficient for BGE-small + LanceDB
+    region: oregon
+    plan: free                   # Free tier: 512 MB RAM, spins down after 15 min idle
     healthCheckPath: /health
 
-    # ── Environment variables ────────────────────────────────────────────────
-    # Set GROQ_API_KEY in the Render dashboard (Environment tab).
-    # Never commit it here.
     envVars:
       - key: GROQ_API_KEY
-        sync: false          # must be set manually in Render dashboard
+        sync: false              # Set manually in Render dashboard — never commit the key
       - key: LLM_MODEL
         value: llama-3.3-70b-versatile
       - key: PYTHONUNBUFFERED
